@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>課餘課程鐘點費申請</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <section class="workspace">
+      <header class="topbar">
+        <div>
+          <p class="school">桃園市龍潭區石門國民小學</p>
+          <h1>課餘課程鐘點費申請</h1>
+        </div>
+        <button class="icon-button" type="button" id="resetButton" title="清空表單" aria-label="清空表單">↺</button>
+      </header>
+
+      <form id="applicationForm" class="form-grid">
+        <section class="panel wide">
+          <div class="panel-title">
+            <h2>文件產出設定</h2>
+            <span id="saveState">尚未送出</span>
+          </div>
+          <label>
+            Apps Script Web App URL
+            <input id="webAppUrl" name="webAppUrl" type="url" placeholder="https://script.google.com/macros/s/.../exec" required>
+          </label>
+          <div class="field-row">
+            <label>
+              Google Drive 資料夾 ID
+              <input id="driveFolderId" name="driveFolderId" autocomplete="off" required>
+            </label>
+            <label>
+              對話 / 案件 ID
+              <input id="conversationId" name="conversationId" autocomplete="off" required>
+            </label>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-title">
+            <h2>課程資料</h2>
+          </div>
+          <label>
+            老師姓名
+            <input id="teacherName" name="teacherName" autocomplete="name" required>
+          </label>
+          <label>
+            課程名稱
+            <input id="courseName" name="courseName" required>
+          </label>
+          <label>
+            課程目的
+            <textarea id="purpose" name="purpose" rows="5" required></textarea>
+          </label>
+          <label>
+            單節鐘點費
+            <input id="hourlyRate" name="hourlyRate" type="number" min="0" value="336" required>
+          </label>
+        </section>
+
+        <section class="panel">
+          <div class="panel-title">
+            <h2>上課時間</h2>
+            <button class="small-button" type="button" id="addSessionButton">新增</button>
+          </div>
+          <div id="sessionsList" class="stack"></div>
+        </section>
+
+        <section class="panel wide">
+          <div class="panel-title">
+            <h2>學生名單</h2>
+            <span id="studentCount">0 人</span>
+          </div>
+          <textarea id="students" name="students" rows="8" placeholder="每行一位學生" required></textarea>
+        </section>
+
+        <section class="summary wide">
+          <div>
+            <strong id="totalPeriods">0 節</strong>
+            <span>總節次</span>
+          </div>
+          <div>
+            <strong id="totalAmount">0 元</strong>
+            <span>預估總金額</span>
+          </div>
+          <button class="primary-button" type="submit">送出並產生文件</button>
+        </section>
+      </form>
+
+      <section class="result-panel" id="resultPanel" hidden>
+        <h2>產出結果</h2>
+        <div id="resultLinks" class="result-links"></div>
+      </section>
+    </section>
+  </main>
+
+  <template id="sessionTemplate">
+    <div class="session-card">
+      <label>
+        日期
+        <input data-field="date" type="date" required>
+      </label>
+      <label>
+        開始
+        <input data-field="startTime" type="time" required>
+      </label>
+      <label>
+        結束
+        <input data-field="endTime" type="time" required>
+      </label>
+      <label>
+        節次
+        <input data-field="periods" type="number" min="1" value="2" required>
+      </label>
+      <button class="icon-button remove-session" type="button" title="移除時間" aria-label="移除時間">×</button>
+    </div>
+  </template>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,264 @@
+:root {
+  --bg: #eef2f7;
+  --surface: #ffffff;
+  --line: #d7dee8;
+  --text: #172033;
+  --muted: #667085;
+  --brand: #126b5f;
+  --brand-strong: #0b4e45;
+  --accent: #bf5b21;
+  --focus: rgba(18, 107, 95, 0.18);
+  --danger: #b42318;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+.app-shell {
+  width: min(1180px, calc(100vw - 32px));
+  margin: 0 auto;
+  padding: 28px 0 40px;
+}
+
+.workspace {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 18px 48px rgba(23, 32, 51, 0.08);
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 22px 24px;
+  border-bottom: 1px solid var(--line);
+  background: #f8fafc;
+}
+
+.school {
+  margin: 0 0 4px;
+  color: var(--brand);
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+h1,
+h2 {
+  margin: 0;
+  letter-spacing: 0;
+}
+
+h1 {
+  font-size: clamp(1.45rem, 2.2vw, 2rem);
+}
+
+h2 {
+  font-size: 1rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 16px;
+  padding: 20px;
+}
+
+.panel,
+.summary,
+.result-panel {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 16px;
+  background: var(--surface);
+}
+
+.wide {
+  grid-column: 1 / -1;
+}
+
+.panel-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.panel-title span {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+label {
+  display: grid;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+input,
+textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 10px 11px;
+  color: var(--text);
+  background: #fff;
+  outline: none;
+}
+
+textarea {
+  resize: vertical;
+}
+
+input:focus,
+textarea:focus {
+  border-color: var(--brand);
+  box-shadow: 0 0 0 4px var(--focus);
+}
+
+.field-row,
+.session-card {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.stack {
+  display: grid;
+  gap: 12px;
+}
+
+.session-card {
+  position: relative;
+  grid-template-columns: 1.1fr 0.9fr 0.9fr 0.7fr 40px;
+  align-items: end;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fbfcfe;
+}
+
+.icon-button,
+.small-button,
+.primary-button {
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 800;
+}
+
+.icon-button {
+  width: 40px;
+  height: 40px;
+  color: var(--text);
+  background: #e9edf3;
+  font-size: 1.15rem;
+}
+
+.small-button {
+  min-height: 34px;
+  padding: 0 14px;
+  color: #fff;
+  background: var(--brand);
+}
+
+.primary-button {
+  min-height: 46px;
+  padding: 0 18px;
+  color: #fff;
+  background: var(--brand);
+}
+
+.primary-button:hover,
+.small-button:hover {
+  background: var(--brand-strong);
+}
+
+.remove-session {
+  color: var(--danger);
+  background: #fff1f0;
+}
+
+.summary {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  align-items: center;
+  gap: 16px;
+  background: #f8fafc;
+}
+
+.summary div {
+  display: grid;
+  gap: 2px;
+}
+
+.summary strong {
+  color: var(--accent);
+  font-size: 1.35rem;
+}
+
+.summary span {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.result-panel {
+  margin: 0 20px 20px;
+}
+
+.result-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.result-links a {
+  border-radius: 6px;
+  padding: 10px 12px;
+  color: #fff;
+  background: var(--brand);
+  text-decoration: none;
+  font-weight: 800;
+}
+
+@media (max-width: 820px) {
+  .app-shell {
+    width: min(100vw - 16px, 720px);
+    padding-top: 8px;
+  }
+
+  .form-grid,
+  .field-row,
+  .summary {
+    grid-template-columns: 1fr;
+  }
+
+  .session-card {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .remove-session {
+    width: 100%;
+  }
+}
