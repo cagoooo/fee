@@ -1,0 +1,24 @@
+{
+  "action": "upsertApplication",
+  "conversationId": "demo-teacher-2026-after-school",
+  "driveFolderId": "GOOGLE_DRIVE_FOLDER_ID",
+  "teacherName": "王小明",
+  "courseName": "課後足球社",
+  "purpose": "提升學生體能、團隊合作與規律運動習慣。",
+  "hourlyRate": 336,
+  "sessions": [
+    {
+      "date": "2026-09-10",
+      "startTime": "16:00",
+      "endTime": "17:30",
+      "periods": 2
+    },
+    {
+      "date": "2026-09-17",
+      "startTime": "16:00",
+      "endTime": "17:30",
+      "periods": 2
+    }
+  ],
+  "students": ["學生甲", "學生乙", "學生丙"]
+}
